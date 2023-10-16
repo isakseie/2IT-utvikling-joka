@@ -1,31 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang="en"> 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velge språk</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1 id="overskrift">Velkommen til Nannestad</h1>
-    <select id="selSpraak">
-        <option>Velg språk her...</option>
-        <option>Norsk</option>
-        <option>Japansk</option>
+    <h1>Velkommen til Nannestad</h1>
+
+    <label for="languageSelect">Velg språk:</label>
+    <select id="languageSelect">
+        <option value="norsk">Norsk</option> 
+        <option value="japansk">Japansk</option>
     </select>
-    <p id="txt">Nannestad er en vakker og intim landsby i naturrike omgivelser.
-        Nannestad er kjent for skisport og rikt friluftsliv. Det er mange
-        fiskevann, og Leira er vår elv som renner ut i Øyeren ved Lillestrøm.
-    </p>
+
+    <div id="content"> <!-- En container for tekstinnhold som kan skifte avhengig av språkvalget. -->
+        <p id="norskText">Nannestad er en vakker kommune i Viken fylke i Norge.</p> 
+        <p id="japanskText">ナンネスタッドはノルウェーのビケン県にある美しい町です。</p>
+    </div>
 
     <script>
+        const languageSelect = document.getElementById('languageSelect'); // Henter select-menyen ved hjelp av id "languageSelect".
+        const norskText = document.getElementById('norskText'); // Henter norsk tekst ved hjelp av id "norskText".
+        const japanskText = document.getElementById('japanskText'); // Henter japansk tekst ved hjelp av id "japanskText".
 
-        function endreSpraak(){
-            let valgtSpraak = selSpraak.value;
-           // Hjelp
-        }
-        
-    selSpraak.addEventListener("change", endreSpraak);
-    
+        languageSelect.addEventListener('change', function () { // Legger til en hendelseslytter for endring i språkvalget.
+            const selectedLanguage = languageSelect.value; // Henter verdien (språket) som er valgt i rullegardinmenyen.
+
+            if (selectedLanguage === 'norsk') {
+                norskContent.style.display = 'block'; // Viser norsk tekst.
+                japanskContent.style.display = 'none'; // Skjuler japansk tekst.
+            } else if (selectedLanguage === 'japansk') {
+                norskContent.style.display = 'none'; // Skjuler norsk tekst.
+                japanskContent.style.display = 'block'; // Viser japansk tekst.
+            }
+        });
     </script>
 </body>
 </html>
